@@ -18,7 +18,6 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-require('./app/routes/product.routes')(app);
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true
@@ -34,6 +33,7 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 });
 
+require('./app/routes/product.routes')(app);
 // listen for requests
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
